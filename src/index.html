@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <title>AngularJS Test</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+
+  </head>
+
+  <body ng-app = "myapp">
+    <div class="container-sm" ng-controller = "CardsController" >
+      <h2 class="mt-5 mb-5">Lots of work todo</h2>
+
+      <div
+        class="card mb-2"
+        ng-class="item.completed ?  'bg-success' : 'bg-primary' "
+        ng-repeat="(index, item) in todos"
+        ng-click="toggleCard(index, item.id)"
+      >
+        <div class="card-body">
+          <p class="card-title text-white text-capitalize">{{ item.title }}</p>
+          <p class="float-right text-white">{{ item.completed ? 'Completed' : 'Unfinished' }}</p>
+          <!-- stop propagation to avoid any event bubbling -->
+          <button
+            class="btn btn-danger"
+            ng-click="deleteCard(index, item.id);$event.stopPropagation()"
+          >Delete</button>
+        </div>
+      </div>
+
+      <div class="mb-5 mt-5" ng-controller = "FormController">
+        <h2>Add another task</h2>
+
+        <form class="mt-5 mb-5" ng-submit="onSubmit()" >
+          <div class="form-group">
+            <label for="task">Task</label>
+            <input
+              id="task"
+              class="form-control"
+              name="task"
+              ng-model="task"
+              type="text"
+            />
+          </div>
+          <input class="btn btn-primary" type="submit" value="Add Task" />
+        </form>
+      </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+    <script src="./js/components/cards.js"></script>
+    <script src="./js/components/forms.js"></script>
+
+  </body>
+</html>
