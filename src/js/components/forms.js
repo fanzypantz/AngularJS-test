@@ -7,7 +7,7 @@ app.controller("FormController", function($scope, $http) {
     if ($scope.task !== '') {
       $http({
         method: 'POST',
-        url: `https://jsonplaceholder.typicode.com/todos`,
+        url: `https://localhost:44350/api/TodoItems`,
         data: {
           // Fake data
           userId: 1,
